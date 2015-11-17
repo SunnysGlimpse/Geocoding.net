@@ -9,6 +9,7 @@ namespace Geocoding.Google
 	    readonly GoogleLocationType locationType;
 		readonly GoogleAddressComponent[] components;
 		readonly bool isPartialMatch;
+		readonly string placeId;
 		readonly GoogleViewport viewport;
 
 		public GoogleAddressType Type
@@ -31,6 +32,11 @@ namespace Geocoding.Google
 			get { return isPartialMatch; }
 		}
 
+		public string PlaceId
+        	{
+        		get { return placeId; }
+        	}
+        
 		public GoogleViewport Viewport
 		{
 			get { return viewport; }
@@ -42,7 +48,7 @@ namespace Geocoding.Google
 		}
 
 	    public GoogleAddress(GoogleAddressType type, string formattedAddress, GoogleAddressComponent[] components,
-	        Location coordinates, GoogleViewport viewport, bool isPartialMatch, GoogleLocationType locationType)
+	        Location coordinates, GoogleViewport viewport, bool isPartialMatch, GoogleLocationType locationType, string placeId)
 	        : base(formattedAddress, coordinates, "Google")
 	    {
 	        if (components == null)
@@ -51,6 +57,7 @@ namespace Geocoding.Google
 	        this.type = type;
 	        this.components = components;
 	        this.isPartialMatch = isPartialMatch;
+	        this.placeId = placeId;	        
 	        this.viewport = viewport;
 	        this.locationType = locationType;
 	    }
